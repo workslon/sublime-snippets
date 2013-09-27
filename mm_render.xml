@@ -1,0 +1,16 @@
+<snippet>
+  <content><![CDATA[
+;(function(test){var gi=mmcore.GenInfo[test.name],rmb=[],_name=test.name.replace(/\s/g,"_"),n=100;for(var mb in tc){if(!/undefined|Default/.test(gi[mb.toLowerCase()])){rmb.push(mb);for(var con in tc[mb]){for(var tcc=tc[mb][con],i=0;i<tcc.length;i++){tcc[i]=tcc[i].replace(/\[mm_path\]([^)'"]+)/g,function(m,img){return new Image().src=test.mm_path+img})}}}}if(rmb.length){document.write("<style id='"+_name+"' type='text/css'>"+test.hide+"{position: relative; left:-10000px}</style>");var mmInt=setInterval(function(){if(test.is_def&&test.is_def()||mmcore._docEnd||!n--){var el=document.getElementById(_name);mmcore.RenderMaxyboxes(rmb);el.parentNode.removeChild(el);clearInterval(mmInt)}},50)}})(
+  {
+    is_def:function(){},
+    mm_path: "${1:path}",
+    name: "${2:name}",
+    hide: "${3:selector}"
+  }
+);
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>render</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>source.js</scope>
+</snippet>
