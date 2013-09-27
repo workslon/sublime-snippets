@@ -1,0 +1,18 @@
+<snippet>
+  <content><![CDATA[
+mmcore.AddDocLoadHandler(function(){});(function(test){var _name=test.name.replace(/\s/g,"_"),n=100,showFn=function(){var el=document.getElementById(_name);el.parentNode.removeChild(el)};(function fnWait(){if(test.mmChecker()){mmcore.SetPageID(test.pageID);mmcore.HideMaxyboxes=function(){};mmcore.CGRequest(function(){mmcore.AddDocLoadHandler(showFn)})}else if(mmcore._docEnd||!n--){showFn()}else{mmcore._async=true;setTimeout(fnWait,50)}})();document.write("<style id='"+_name+"' type='text/css'>"+test.hide+"{position:relative; left:-10000px}</style>")})(
+  {
+    name:"${1:name}",
+    hide:"${2:selector}",
+    pageID:"${3:pageID}",
+    mmChecker:function(){
+      return ${4:false}
+    }
+  }
+);
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>checker</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>source.js</scope>
+</snippet>
